@@ -65,7 +65,10 @@ public class Main {
         scoreBoard.add(new NumberOfAKind("4 of a kind:", 0, 4));
         scoreBoard.add(new Pair("1 Pair", 1));
         scoreBoard.add(new Pair("2 Pairs", 2));
-
+        scoreBoard.add(new SumOfAllDice("Full house"));
+        scoreBoard.add(new SumOfAllDice("Small straight"));
+        scoreBoard.add(new SumOfAllDice("Large straight"));
+        scoreBoard.add(new SumOfAllDice("Chance"));
 
         scoreBoard.add(new NumberOfAKind("Yahtzee:", 0, 5));
 
