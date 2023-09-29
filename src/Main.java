@@ -63,6 +63,8 @@ public class Main {
         scoreBoard.add(new NumberOfAKind("6:s", 6, 0));
         scoreBoard.add(new NumberOfAKind("3 of a kind:", 0, 3));
         scoreBoard.add(new NumberOfAKind("4 of a kind:", 0, 4));
+        scoreBoard.add(new Pair("1 Pair", 1));
+        scoreBoard.add(new Pair("2 Pairs", 2));
 
 
         scoreBoard.add(new NumberOfAKind("Yahtzee:", 0, 5));
