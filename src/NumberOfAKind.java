@@ -20,7 +20,7 @@ public class NumberOfAKind extends ScoreItem{
             }
         }else{
             for(Map.Entry<Integer, Integer> entry: diceResult.entrySet()){
-                if(entry.getValue() == 5){
+                if(entry.getValue() == 5 && timesNrAppears == 5){
                     return 50;
                 } else if (entry.getValue() >= timesNrAppears){
                     return entry.getKey()*timesNrAppears;
@@ -31,6 +31,8 @@ public class NumberOfAKind extends ScoreItem{
 
         return 0;
     }
+
+
 
     public String toString(){
         return "Name:" + name + " Score: " + score + " Has to be: " + numberItHasToBe + " TimesHasToAppear: " + timesNrAppears;

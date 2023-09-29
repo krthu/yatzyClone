@@ -4,29 +4,41 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        String GREEN = "\u001B[32m";
-        String RESET = "\u001B[0m";
+
 
         Player p1 = new Player("Test", 5);
-        for(int i = 0; i < 2; i++){
-
-            p1.rollAllDice();
-            menuForHoldingDice(p1.getDice());
-        }
-        p1.rollAllDice();
-        printAllDice(p1.getDice());
-        System.out.println(p1.getDiceResult());
         p1.setScoreBoard(getScoreBoard());
-        System.out.println(p1.getScoreBoard());
-        p1.getListOfPossibleScores();
+
+
+        for(int j = 0; j < p1.getScoreBoard().size(); j++){ // Loopar hela scorboarden
+
+            for(int i = 0; i < 2; i++){ // Loppar 3 gånger för att antal slag
+
+                p1.rollAllDice();
+                menuForHoldingDice(p1.getDice());
+            }
+            p1.rollAllDice();
+            printAllDice(p1.getDice());
+            System.out.println(p1.getDiceResult());
+
+            System.out.println(p1.getScoreBoard());
+            p1.resetDies();
+            addScoreMenu(p1);
+        }
+        p1.setTotalScore();
+        System.out.println(p1.getScore());
+
     }
 
     public static void printAllDice(ArrayList<Die> dice){
+        String RESET = "\u001B[0m";
+        String BLUE = " \u001B[34m";
         int i = 1;
         for (Die die: dice) {
-            System.out.println(i + ": "  +die.getCurrentValue() + " " + (die.isHeld() ? "Hold": ""));
+            System.out.println( BLUE + i + RESET + ": "  +die.getCurrentValue() + " " + (die.isHeld() ? "Hold": ""));
             i++;
         }
+        System.out.println(BLUE +"r: "+RESET +"To roll.");
     }
 
     public static void menuForHoldingDice(ArrayList<Die> dice){
@@ -34,28 +46,52 @@ public class Main {
         System.out.println("What dice do you want to hold:");
         while (true){
             printAllDice(dice);
-            System.out.println("0: To roll.");
-            int selected = sc.nextInt();
+
+            String selected = sc.nextLine();
 
             switch (selected) {
-                case 1: dice.get(0).toogleHeld();
+                case "1": dice.get(0).toogleHeld();
                     break;
-                case 2: dice.get(1).toogleHeld();
+                case "2": dice.get(1).toogleHeld();
                     break;
-                case 3: dice.get(2).toogleHeld();
+                case "3": dice.get(2).toogleHeld();
                     break;
-                case 4: dice.get(3).toogleHeld();
+                case "4": dice.get(3).toogleHeld();
                     break;
-                case 5: dice.get(4).toogleHeld();
+                case "5": dice.get(4).toogleHeld();
                     break;
-                case 6: dice.get(5).toogleHeld();
+                case "6": dice.get(5).toogleHeld();
                     break;
-                case 0:
+                case "r":
                     return;
             }
 
             System.out.println();
         }
+    }
+
+    public static void addScoreMenu(Player player){
+        Scanner sc = new Scanner(System.in);
+        String GREEN = "\u001B[32m";
+        String RESET = "\u001B[0m";
+        String BLUE = " \u001B[34m";
+
+        System.out.println(player.getName() + " vart vill du spara poängen");
+        int selected = 1;
+        for(ScoreItem item: player.getScoreBoard()){
+            if(item.score == -1){
+                System.out.println(BLUE + selected + RESET +": " + item.name + " "  +GREEN + item.getScore(player.getDiceResult()) + RESET);
+            }else{
+                System.out.println(item.name + " " + item.score);
+            }
+            selected++;
+        }
+        int choice = sc.nextInt();
+        sc.nextLine();
+        ScoreItem scoreItem = player.getScoreBoard().get(choice -1);
+        scoreItem.setScore(scoreItem.getScore(player.getDiceResult()));
+
+
 
     }
 

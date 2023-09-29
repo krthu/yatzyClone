@@ -7,6 +7,7 @@ public abstract class ScoreItem {
 
     public ScoreItem(String name){
         this.name = name;
+        score = -1;
     }
 
     public int getScore(HashMap<Integer, Integer> diceResult) { // Have to be overwritten. Interface???

@@ -24,7 +24,7 @@ public class SumOfAllDice extends ScoreItem{
                 }
             }
             case "full house" -> {
-                if(diceResult.size() != 2){
+                if(diceResult.size() != 2 || !diceResult.containsValue(3)){
                     return 0;
                 }
             }

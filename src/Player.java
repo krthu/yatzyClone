@@ -17,8 +17,16 @@ public class Player {
         }
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public ArrayList<ScoreItem> getScoreBoard() {
         return scoreBoard;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setScoreBoard(ArrayList<ScoreItem> scoreBoard) {
@@ -51,14 +59,30 @@ public class Player {
         return diceResult;
     }
 
-    public void getListOfPossibleScores(){
-
+    public void setTotalScore() {
+        int sum = 0;
         for (ScoreItem item: scoreBoard) {
-            if(item.score == 0) {
-                System.out.println(item.name + " "  + item.getScore(getDiceResult()));
+            if(item.score != -1){
+                sum += item.score;
             }
         }
+        score = sum;
     }
+
+    public void resetDies(){
+        for (Die die:dice) {
+            die.setHeld(false);
+        }
+    }
+
+//    public void getListOfPossibleScores(){
+//
+//        for (ScoreItem item: scoreBoard) {
+//            if(item.score == 0) {
+//                System.out.println(item.name + " "  + item.getScore(getDiceResult()));
+//            }
+//        }
+ //   }
 
 
 }

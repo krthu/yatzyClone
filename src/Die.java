@@ -22,8 +22,8 @@ public class Die {
         return isHeld;
     }
 
-    public void toogleHeld() {
-        isHeld = !isHeld;
+    public void setHeld(Boolean isHeld){
+        this.isHeld = isHeld;
     }
 
     public int getCurrentValue(){
@@ -32,6 +32,9 @@ public class Die {
 
     public void roll(){
         currentValue = random.nextInt(sides) + 1;
+    }
+    public void toogleHeld() {
+        isHeld = !isHeld;
     }
 
     public String toString(){
