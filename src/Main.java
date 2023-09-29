@@ -2,9 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+        String GREEN = "\u001B[32m";
+        String RESET = "\u001B[0m";
+
         Player p1 = new Player("Test", 5);
         for(int i = 0; i < 2; i++){
+
             p1.rollAllDice();
             menuForHoldingDice(p1.getDice());
         }
@@ -31,6 +36,7 @@ public class Main {
             printAllDice(dice);
             System.out.println("0: To roll.");
             int selected = sc.nextInt();
+
             switch (selected) {
                 case 1: dice.get(0).toogleHeld();
                     break;
@@ -74,6 +80,11 @@ public class Main {
 
         return scoreBoard;
 
+    }
+
+    public static void clearConsole(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
 }

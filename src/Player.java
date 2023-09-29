@@ -52,9 +52,10 @@ public class Player {
     }
 
     public void getListOfPossibleScores(){
+
         for (ScoreItem item: scoreBoard) {
             if(item.score == 0) {
-                System.out.println(item.name + " " + item.getScore(getDiceResult()));
+                System.out.println(item.name + " "  + item.getScore(getDiceResult()));
             }
         }
     }
