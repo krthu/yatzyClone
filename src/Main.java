@@ -11,7 +11,6 @@ public class Main {
         p1.rollAllDice();
         printAllDice(p1.getDice());
         System.out.println(p1.getDiceResult());
-        NumberOfAKind num = new NumberOfAKind("6:", 6, 0);
         p1.setScoreBoard(getScoreBoard());
         System.out.println(p1.getScoreBoard());
         p1.getListOfPossibleScores();
@@ -62,7 +61,11 @@ public class Main {
         scoreBoard.add(new NumberOfAKind("4:s", 4, 0));
         scoreBoard.add(new NumberOfAKind("5:s", 5, 0));
         scoreBoard.add(new NumberOfAKind("6:s", 6, 0));
+        scoreBoard.add(new NumberOfAKind("3 of a kind:", 0, 3));
+        scoreBoard.add(new NumberOfAKind("4 of a kind:", 0, 4));
 
+
+        scoreBoard.add(new NumberOfAKind("Yahtzee:", 0, 5));
 
         return scoreBoard;
 

@@ -1,6 +1,7 @@
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class NumberOfAKind extends ScoreItem{
     int numberItHasToBe;  // If number just have to be a 1 or 2....
@@ -17,7 +18,14 @@ public class NumberOfAKind extends ScoreItem{
             if(diceResult.containsKey(numberItHasToBe)){
                 return (diceResult.get(numberItHasToBe) * numberItHasToBe);
             }
+        }else{
+            for(Map.Entry<Integer, Integer> entry: diceResult.entrySet()){
+                if(entry.getValue() >= timesNrAppears){
+                    return entry.getKey()*timesNrAppears;
+                }
+            }
         }
+
         return 0;
     }
 
