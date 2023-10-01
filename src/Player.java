@@ -9,12 +9,13 @@ public class Player {
 
     private ArrayList<ScoreItem> scoreBoard;
 
-    public Player(String name, int numberOfDice){
+    public Player(String name, int numberOfDice, ArrayList<ScoreItem> scoreBoard){
         this.name = name;
         this.dice = new ArrayList<>();
-        for (int i = 0; i <  5; i ++){
+        for (int i = 0; i <  numberOfDice; i ++){
             dice.add(new Die(6));
         }
+        this.scoreBoard = scoreBoard;
     }
 
     public int getScore() {
@@ -60,20 +61,46 @@ public class Player {
     }
 
     public void setTotalScore() {
+        int scoreForBonus = 63;
+        int bonus = 50;
         int sum = 0;
         for (ScoreItem item: scoreBoard) {
             if(item.score != -1){
                 sum += item.score;
+                if (item.name.equalsIgnoreCase("6:s")){
+                    if (sum > scoreForBonus){
+                        sum += bonus;
+                    }
+                }
             }
         }
         score = sum;
     }
 
-    public void resetDies(){
+    public void removeHeldFromAllDice(){
         for (Die die:dice) {
             die.setHeld(false);
         }
     }
+
+    public boolean addScoreToScoreBoard(int indexOfScoreItem){
+        ScoreItem item = scoreBoard.get(indexOfScoreItem);
+        if (item.score == -1){
+            item.setScore(item.getPossibleScore(getDiceResult()));
+            return true;
+        }
+        return false;
+    }
+
+    public void printCurrentScoreBoard(){
+        for (ScoreItem item: scoreBoard) {
+            System.out.println(item.name + " " + (item.score == -1 ? "": item.score));
+        }
+    }
+
+
+
+
 
 //    public void getListOfPossibleScores(){
 //

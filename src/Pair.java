@@ -13,7 +13,7 @@ public class Pair extends ScoreItem{
 
 
     @Override
-    public int getScore(HashMap<Integer, Integer> diceResult){
+    public int getPossibleScore(HashMap<Integer, Integer> diceResult){
         switch (numberOfPairs){
             case 1 -> {
                 int highestScore = 0;

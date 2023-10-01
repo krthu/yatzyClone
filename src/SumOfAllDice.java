@@ -11,7 +11,7 @@ public class SumOfAllDice extends ScoreItem{
     }
 
     @Override
-    public int getScore(HashMap<Integer, Integer> diceResult){
+    public int getPossibleScore(HashMap<Integer, Integer> diceResult){
         switch (name.toLowerCase()){
             case "small straight" -> {
                 if(diceResult.size() != 5 || !diceResult.containsKey(6)){

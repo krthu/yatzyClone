@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class ScoreItem {
@@ -10,7 +9,7 @@ public abstract class ScoreItem {
         score = -1;
     }
 
-    public int getScore(HashMap<Integer, Integer> diceResult) { // Have to be overwritten. Interface???
+    public int getPossibleScore(HashMap<Integer, Integer> diceResult) { // Have to be overwritten. Interface???
         return 0;
     }
 
